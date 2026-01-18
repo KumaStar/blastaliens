@@ -18,7 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 7538147134619460060, guid: e0a8d3349eca6df46a40e0d0d75f3fc4, type: 3}
     - target: {fileID: 6119817343286584137, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
       propertyPath: m_Name
-      value: glassplatform3 (6) Variant
+      value: snowplatform3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119817343286584137, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
+      propertyPath: m_TagString
+      value: Snow
       objectReference: {fileID: 0}
     - target: {fileID: 7627319819101690372, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
       propertyPath: m_Sprite

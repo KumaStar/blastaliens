@@ -8,13 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 197033874393148106, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
+      propertyPath: m_TagString
+      value: Snow
+      objectReference: {fileID: 0}
     - target: {fileID: 423972642252558547, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7538147134619460060, guid: e0a8d3349eca6df46a40e0d0d75f3fc4, type: 3}
+    - target: {fileID: 4526903326450112006, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
+      propertyPath: m_TagString
+      value: Snow
+      objectReference: {fileID: 0}
     - target: {fileID: 4849367762079914175, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
       propertyPath: m_Name
       value: SnowPlatform2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849367762079914175, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
+      propertyPath: m_TagString
+      value: Snow
       objectReference: {fileID: 0}
     - target: {fileID: 5291241179828678105, guid: 4a7a8da4997ee0b44b46c37d5dd63f57, type: 3}
       propertyPath: m_LocalPosition.x

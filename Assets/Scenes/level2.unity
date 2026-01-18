@@ -214,11 +214,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 550688811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &225210476 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-  m_PrefabInstance: {fileID: 1775399517}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279049242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d20a1da4a6d78449a359a3958044992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _HorizontelVelocity: 5
+  _maxHorizontalSpeed: 5
   _JumpVelocity: 5
   _JumpDuration: 0.5
   _JumpSprite: {fileID: 3810435283219779972, guid: d7b7c20a22cab59408f025560af9604f, type: 3}
@@ -579,7 +574,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   _footOffset: 0.35
+  _groundAcceleration: 10
+  _snowAcceleration: 1.5
   IsGrounded: 0
+  IsOnSnow: 0
 --- !u!95 &378656804
 Animator:
   serializedVersion: 7
@@ -1180,7 +1178,6 @@ Transform:
   - {fileID: 1284525948}
   - {fileID: 131652331}
   - {fileID: 8874022139658272692}
-  - {fileID: 225210476}
   - {fileID: 1449150037}
   - {fileID: 914630740}
   - {fileID: 454859477}
@@ -1865,8 +1862,8 @@ GameObject:
   - component: {fileID: 1520354541}
   - component: {fileID: 1520354543}
   m_Layer: 0
-  m_Name: grassMid_0
-  m_TagString: Untagged
+  m_Name: Snow Ground
+  m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2340,63 +2337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7638d40f472ee145a5999f3ef2b360c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spikes
---- !u!1001 &1775399517
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 550688811}
-    m_Modifications:
-    - target: {fileID: 6119817343286584137, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_Name
-      value: glassplatform3 (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0004901886
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.63829
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874022139792901545, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 949ab1b74f8fa534584b97337f24fc95, type: 3}
 --- !u!4 &1891090379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5387088708423108293, guid: 6741f5125c39d9b41b98a8bdf58b05e9, type: 3}
@@ -2414,8 +2354,8 @@ GameObject:
   - component: {fileID: 1961026637}
   - component: {fileID: 1961026636}
   m_Layer: 0
-  m_Name: grassMid_0 (1)
-  m_TagString: Untagged
+  m_Name: Snow Ground
+  m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2591,6 +2531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: snowplatform3
       objectReference: {fileID: 0}
+    - target: {fileID: 3263110397165279179, guid: d63854cdb241894418159760d413938a, type: 3}
+      propertyPath: m_TagString
+      value: Snow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2647,6 +2591,10 @@ PrefabInstance:
     - target: {fileID: 3263110397165279179, guid: d63854cdb241894418159760d413938a, type: 3}
       propertyPath: m_Name
       value: snowplatform3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263110397165279179, guid: d63854cdb241894418159760d413938a, type: 3}
+      propertyPath: m_TagString
+      value: Snow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2767,6 +2715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowPlatform2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1854493898140421122, guid: 1ae84230604fad64abebd0097d01ec1f, type: 3}
+      propertyPath: m_TagString
+      value: Snow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2824,6 +2776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowPlatform2
       objectReference: {fileID: 0}
+    - target: {fileID: 1854493898140421122, guid: 1ae84230604fad64abebd0097d01ec1f, type: 3}
+      propertyPath: m_TagString
+      value: Snow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2880,6 +2836,10 @@ PrefabInstance:
     - target: {fileID: 3263110397165279179, guid: d63854cdb241894418159760d413938a, type: 3}
       propertyPath: m_Name
       value: SnowPlatform3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263110397165279179, guid: d63854cdb241894418159760d413938a, type: 3}
+      propertyPath: m_TagString
+      value: Snow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
