@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System;
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _groundAcceleration = 10f;
     [SerializeField] private float _snowAcceleration = 1f;
 
+    private PlayerInput _playerInput;
     private float _horizontal;
     private int _jumpRemaining;
     private float _JumpEndTime;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
@@ -51,18 +54,18 @@ public class Player : MonoBehaviour
         updateGrounding();
 
         // Movement
-        var horizontalInput = Input.GetAxis("Horizontal");
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        var horizontalInput = _playerInput.actions["Move"].ReadValue<Vector2>().x;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>(); 
         var vertical = rb.linearVelocity.y;
 
-        if (Input.GetButtonDown("Fire1") && _jumpRemaining > 0)
+        if (_playerInput.actions["Jump"].WasPerformedThisFrame() && _jumpRemaining > 0)
         {
             _JumpEndTime = Time.time + _JumpDuration;
             _jumpRemaining--;
             _audioSource.pitch = (_jumpRemaining > 0) ? 1f : 1.2f;
             _audioSource.Play();
         }
-        if (Input.GetButton("Fire1") && (_JumpEndTime > Time.time))
+        if ( (_playerInput.actions["Jump"].ReadValue<float>() > 0 ) && (_JumpEndTime > Time.time))
         {
             vertical = _JumpVelocity;
         }
