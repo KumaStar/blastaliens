@@ -12,18 +12,22 @@ public class Player : MonoBehaviour
     [SerializeField] private float _footOffset = 0.1f;
     [SerializeField] private float _groundAcceleration = 10f;
     [SerializeField] private float _snowAcceleration = 1f;
+    [SerializeField] private AudioClip _coinSFX;
 
     private PlayerInput _playerInput;
-    private float _horizontal;
-    private int _jumpRemaining;
-    private float _JumpEndTime;
     private AudioSource _audioSource;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-
     
+        
+    private float _horizontal;
+    private int _jumpRemaining;
+    private float _JumpEndTime;
+
+    public int Coins { get; private set; }
     public bool IsGrounded;
     public bool IsOnSnow;
+    
 
     private void Awake()
     {
@@ -31,6 +35,8 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
+
+        FindFirstObjectByType<PlayerCanvas>().Bind(this);
     }
     private void OnDrawGizmos()
     {
@@ -129,5 +135,11 @@ public class Player : MonoBehaviour
         {
             _spriteRenderer.flipX = false;
         }
+    }
+
+    public void AddPoint()
+    {
+        ++Coins;
+        _audioSource.PlayOneShot(_coinSFX);
     }
 }
